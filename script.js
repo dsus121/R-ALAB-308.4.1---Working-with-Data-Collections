@@ -107,14 +107,14 @@ console.log(arrSorted);
 
 // Part 5: Full Circle
 // As a final task, transform the final set of data back into CSV format.
-
+// --------- need to pull out just the header arrary first
 let csvNew = ""; // initialize the new string as empty
-const strHeaderNew = Object.keys(objSorted[0]).join(",") + "\n"; 
-console.log(strHeaderNew) // it works
+const strHeaderNew = Object.keys(objSorted[0]).join(",") + "\n"; // 
+console.log(strHeaderNew) // check if it works ... yep
 
 let strPeopleNew = ""; // initialize the new string as empty
-for (val of arrSorted) {
-  strPeopleNew += Object.values(val).join(",") + "\n"
+for (value of arrSorted) {
+  strPeopleNew += Object.values(value).join(",") + "\n"
 }
 csvNew = strHeaderNew + strPeopleNew;
 console.log(csvNew)
