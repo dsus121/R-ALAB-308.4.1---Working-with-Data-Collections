@@ -79,9 +79,9 @@ arrSorted = arrPeople.map(obj =>
 
 console.log(arrSorted);
 
-const objSorted = arrSorted.reduce((acc, item, index) => {
-  acc[index] = item;
-  return acc;
+const objSorted = arrSorted.reduce((acc, item, index) => { // reduce is like a loop
+  acc[index] = item; // acc is the accumulator (stores the key-value pairs)
+  return acc; // item is the current element in arrSorted that's being processed
 }, {}); // converted array into object
 
 console.log(objSorted); // check output ... yep
@@ -96,22 +96,25 @@ console.log(objSorted); // check output ... yep
 // 3- Add the following object to the end of the array:
 // { id: "7", name: "Bilbo", occupation: "None", age: "111" }
 
-arrSorted.pop(3); // removes the last element
+arrSorted.pop(); // removes the last element
 console.log(arrSorted); // check ... yep
 
-// arrSorted.unshift({id: "48", name: "Barry", occupation: "Runner", age: "25" })
-// console.log(arrSorted); 
+arrSorted.splice(1, 0, {id: "48", name: "Barry", occupation: "Runner", age: "25" });
+console.log(arrSorted); 
 
-// woah ... why is Barry on line 103 AND 100 ?!
-// when i ran 100 before, it cut off Bill
+arrSorted.push({ id: "7", name: "Bilbo", occupation: "None", age: "111" });
+console.log(arrSorted); 
 
-// Part 5: 
-//
-let csvNew = "";
-const headerNew = Object.keys(arrSorted[0]).join(",") + "\n";
-let peopleNew = "";
-for (value of arrSorted) {
-  peopleNew += object.values(value).join(",") + "\n"
+// Part 5: Full Circle
+// As a final task, transform the final set of data back into CSV format.
+
+let csvNew = ""; // initialize the new string as empty
+const strHeaderNew = Object.keys(objSorted[0]).join(",") + "\n"; 
+console.log(strHeaderNew) // it works
+
+let strPeopleNew = ""; // initialize the new string as empty
+for (val of arrSorted) {
+  strPeopleNew += Object.values(val).join(",") + "\n"
 }
-csvNew = headerNew = peopleNew;
+csvNew = strHeaderNew + strPeopleNew;
 console.log(csvNew)
